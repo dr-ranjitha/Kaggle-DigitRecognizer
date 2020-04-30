@@ -15,3 +15,19 @@ import seaborn as sns
 # Importing the dataset
 train = pd.read_csv("train.csv")
 test = pd.read_csv("test.csv")
+
+#Get some idea about the training data
+train.head()
+train.info()
+train.shape
+train.describe()
+train.describe(include=['O'])#describe(include = ['O']) will show the descriptive statistics of object data types.
+train.isnull().sum()
+train.tail()
+#Get some idea about the testing data
+test.head()
+test.info()
+test.shape
+test.describe()
+test.describe(include=['O'])#describe(include = ['O']) will show the descriptive statistics of object data types.
+test.isnull().sum() #missing values
