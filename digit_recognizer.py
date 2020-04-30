@@ -31,3 +31,11 @@ test.shape
 test.describe()
 test.describe(include=['O'])#describe(include = ['O']) will show the descriptive statistics of object data types.
 test.isnull().sum() #missing values
+
+#Split training data into dependent variable and independent variables
+Y_train = train["label"]
+X_train = train.drop(labels = ["label"],axis = 1)
+
+#check how many rows per digit
+sns.countplot(Y_train)
+Y_train.value_counts()
