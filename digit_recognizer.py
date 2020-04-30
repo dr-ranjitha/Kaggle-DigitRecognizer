@@ -36,6 +36,6 @@ test.isnull().sum() #missing values
 Y_train = train["label"]
 X_train = train.drop(labels = ["label"],axis = 1)
 
-#check how many rows per digit
+#check how many rows per digit or count per digit
 sns.countplot(Y_train)
 Y_train.value_counts()
