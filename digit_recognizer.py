@@ -39,3 +39,9 @@ X_train = train.drop(labels = ["label"],axis = 1)
 #check how many rows per digit or count per digit
 sns.countplot(Y_train)
 Y_train.value_counts()
+#Conclusion: This is a multiclass classification problem.
+
+#Check if there is null or missing values 
+X_train.isnull().any().describe()
+test.isnull().any().describe()
+#Conclusion: There are no missing values in the train and test dataset.
