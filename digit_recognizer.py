@@ -35,6 +35,8 @@ test.isnull().sum() #missing values
 #Split training data into dependent variable and independent variables
 Y_train = train["label"]
 X_train = train.drop(labels = ["label"],axis = 1)
+# free some space
+del train 
 
 #check how many rows per digit or count per digit
 sns.countplot(Y_train)
@@ -45,3 +47,15 @@ Y_train.value_counts()
 X_train.isnull().any().describe()
 test.isnull().any().describe()
 #Conclusion: There are no missing values in the train and test dataset.
+
+# Normalize the data
+X_train = X_train / 255.0
+test = test / 255.0
+
+# Reshape image in 3 dimensions (height = 28px, width = 28px , channel = 1) sqrt(784) = 28
+X_train = X_train.values.reshape(-1,28,28,1)
+test = test.values.reshape(-1,28,28,1)
+
+# Encode labels to one hot vectors (ex : 2 -> [0,0,1,0,0,0,0,0,0,0])
+from keras.utils.np_utils import to_categorical
+Y_train = to_categorical(Y_train, num_classes = 10)
