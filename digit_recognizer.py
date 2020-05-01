@@ -53,9 +53,25 @@ X_train = X_train / 255.0
 test = test / 255.0
 
 # Reshape image in 3 dimensions (height = 28px, width = 28px , channel = 1) sqrt(784) = 28
+#The new shape should be compatible with the original shape
 X_train = X_train.values.reshape(-1,28,28,1)
 test = test.values.reshape(-1,28,28,1)
 
 # Encode labels to one hot vectors (ex : 2 -> [0,0,1,0,0,0,0,0,0,0])
 from keras.utils.np_utils import to_categorical
 Y_train = to_categorical(Y_train, num_classes = 10)
+
+# Set the random seed
+random_seed = 2
+
+# Splitting the dataset into the Training set and Test set
+# Split the train and the validation set for the fitting
+from sklearn.model_selection import train_test_split
+X_train, X_val, Y_train, Y_Val = train_test_split(X_train, Y_train, test_size = 0.1, random_state = random_seed)
+
+#Visualize one digit and it's array values
+plt.title(Y_train[0])
+plt.plot(Y_train[0])
+plt.xticks(range(10));
+
+plt.imshow(X_train[0][:,:,0])
